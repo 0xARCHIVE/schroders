@@ -2,6 +2,8 @@
 
 from typing import TypeAlias
 
+Coord: TypeAlias = tuple[int, int]
+Layout: TypeAlias = dict[Coord, str]
 Sequence: TypeAlias = list[str]
 
 
@@ -15,4 +17,5 @@ class Keypad:
 
 def build_keypad_from_csv(filename: str) -> Keypad:
     """Parse CSV file and return a new Keypad object."""
-    return Keypad()
+    new_keypad = Keypad()
+    return new_keypad
