@@ -1,10 +1,14 @@
 """Keypad module."""
 
+from typing import TypeAlias
+
+Sequence: TypeAlias = list[str]
+
 
 class Keypad:
     """Keypad class."""
 
-    def generate_seqs(self, length: int) -> list[list[str]]:
+    def generate_seqs(self, length: int) -> list[Sequence]:
         """Return all of the valid sequences of the specified length."""
         return []
 
