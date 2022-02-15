@@ -11,6 +11,7 @@ repos:
     rev: 3.9.2
     hooks:
     -   id: flake8
+        additional_dependencies: [flake8-docstrings]
 -   repo: https://github.com/psf/black
     rev: 22.1.0
     hooks:
@@ -19,7 +20,7 @@ repos:
     rev: v0.931
     hooks:
         - id: mypy
-          additional_dependencies: [pydantic]  # add if use pydantic
+          additional_dependencies: [pydantic]
 -   repo: https://github.com/PyCQA/isort
     rev: 5.10.1
     hooks:
