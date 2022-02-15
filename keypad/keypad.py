@@ -4,7 +4,7 @@
 class Keypad:
     """Keypad class."""
 
-    def generate_seqs(self, length: int) -> list[str]:
+    def generate_seqs(self, length: int) -> list[list[str]]:
         """Return all of the valid sequences of the specified length."""
         return []
 
