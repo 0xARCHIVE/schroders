@@ -1,8 +1,9 @@
 """Calculate the number of valid keypad sequences of the specified length."""
 
 import argparse
+from pathlib import Path
 
-from keypad import build_keypad_from_csv
+from keypad import build_keypad_from_csv, generate_seqs
 
 if __name__ == "__main__":
     # parse args
@@ -27,10 +28,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # process layout CSV
-    keypad = build_keypad_from_csv(args.layout_csv)
+    path_to_layout: str = str(Path(args.layout_csv))
+    keypad = build_keypad_from_csv(path_to_layout)
 
     # calculate number of sequences
-    valid_seqs = keypad.generate_seqs(length=args.seq_length)
+    valid_seqs = generate_seqs(keypad=keypad, length=args.seq_length)
     num_seqs = len(valid_seqs)
 
     print(num_seqs)
