@@ -28,7 +28,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # process layout CSV
-    path_to_layout: str = str(Path(args.layout_csv))
+    path_to_layout = str(Path(args.layout_csv))
     keypad = build_keypad_from_csv(path_to_layout)
 
     # calculate number of sequences
