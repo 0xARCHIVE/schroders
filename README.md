@@ -26,7 +26,7 @@ This will automatically create a virtual environment and install the required de
 Supply a CSV layout of the keypad and a sequence length:
 
 ```shell
-python sequence_length.py --layout=layout.csv --length=10
+python keypad/sequence_length.py --layout=layout.csv --length=10
 ```
 
 The output will be as per `problem.pdf`.
