@@ -25,6 +25,13 @@ if __name__ == "__main__":
         required=True,
         help="Sequence length",
     )
+    parser.add_argument(
+        "--max_vowels",
+        dest="max_vowels",
+        type=int,
+        required=True,
+        help="Maximum number of allowed vowels in a valid sequence",
+    )
     args = parser.parse_args()
 
     # process layout CSV
@@ -32,7 +39,9 @@ if __name__ == "__main__":
     keypad = build_keypad_from_csv(path_to_layout)
 
     # calculate number of sequences
-    valid_seqs = generate_seqs(keypad=keypad, length=args.seq_length)
+    valid_seqs = generate_seqs(
+        keypad=keypad, length=args.seq_length, max_vowels=args.max_vowels
+    )
     num_seqs = len(valid_seqs)
 
     print(num_seqs)
