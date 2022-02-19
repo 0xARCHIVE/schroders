@@ -8,6 +8,20 @@ Coord: TypeAlias = tuple[int, int]
 Keypad: TypeAlias = dict[Coord, str]
 
 
+def count_vowels(seq: Sequence) -> int:
+    """Return the number of vowels in seq."""
+    if not seq:
+        return 0
+
+    vowels = ["a", "e", "i", "o", "u"]
+
+    count = 0
+    for val in seq:
+        if val.lower() in vowels:
+            count += 1
+    return count
+
+
 def generate_seqs(keypad: Keypad, length: int) -> list[Sequence]:
     """Return all of the valid sequences of the specified length."""
     return []
