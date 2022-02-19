@@ -26,7 +26,7 @@ This will automatically create a virtual environment and install the required de
 Supply a CSV layout of the keypad and a sequence length:
 
 ```shell
-python num_seqs.py --layout=layout.csv --length=10
+python num_seqs.py --layout=layout.csv --length=10 --max_vowels=2
 ```
 
 The output will be as per `problem.pdf`.
