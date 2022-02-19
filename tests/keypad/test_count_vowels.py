@@ -1,7 +1,9 @@
 """keypad.count_vowels testing suite."""
 
 import unittest
+
 from keypad import count_vowels
+
 
 class TestCountVowels(unittest.TestCase):
     """count_vowels unit testing."""
@@ -20,7 +22,6 @@ class TestCountVowels(unittest.TestCase):
     def test_without_vowels(self):
         """Input a sequence without vowels."""
         self.assertEqual(count_vowels(["b"]), 0)
-
 
     def test_uppercase(self):
         """Input uppercase sequences (should be case insensitive)."""
