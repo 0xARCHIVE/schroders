@@ -25,15 +25,15 @@ class TestGetKnightMoves(unittest.TestCase):
     def test_valid_moves(self):
         """Input a start_coord with moves within the keypad."""
         keypad = {
-            (0, 0),
-            (2, 1),
-            (2, -1),
-            (-2, 1),
-            (-2, -1),
-            (1, 2),
-            (-1, 2),
-            (1, -2),
-            (-1, -2),
+            (0, 0): "",
+            (2, 1): "",
+            (2, -1): "",
+            (-2, 1): "",
+            (-2, -1): "",
+            (1, 2): "",
+            (-1, 2): "",
+            (1, -2): "",
+            (-1, -2): "",
         }
         start_coord = (0, 0)
         expected = {

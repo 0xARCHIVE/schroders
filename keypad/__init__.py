@@ -8,9 +8,9 @@ from .keypad import (
 )
 
 __all__ = [
-    "generate_seqs",
     "build_keypad_from_csv",
     "count_vowels",
+    "generate_seqs",
     "get_knight_moves",
 ]
 __version__ = "0.1.0"
