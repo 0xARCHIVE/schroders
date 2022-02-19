@@ -3,8 +3,8 @@
 import csv
 from typing import TypeAlias
 
-Sequence: TypeAlias = list[str]
 Coord: TypeAlias = tuple[int, int]
+Sequence: TypeAlias = list[str]
 Keypad: TypeAlias = dict[Coord, str]
 
 
@@ -22,9 +22,60 @@ def count_vowels(seq: Sequence) -> int:
     return count
 
 
-def generate_seqs(keypad: Keypad, length: int) -> list[Sequence]:
+def get_knight_moves(keypad: Keypad, start_coord: Coord) -> set[Coord]:
+    """Return all coords that are a knight move away from start_coord."""
+    if start_coord not in keypad:
+        return set()
+
+    x, y = start_coord
+    possible_moves = {
+        (x + 2, y + 1),
+        (x + 2, y - 1),
+        (x - 2, y + 1),
+        (x - 2, y - 1),
+        (x + 1, y + 2),
+        (x - 1, y + 2),
+        (x + 1, y - 2),
+        (x - 1, y - 2),
+    }
+
+    return {coord for coord in possible_moves if coord in keypad}
+
+
+def generate_seqs_from(
+    keypad: Keypad, start_coord: Coord, length: int
+) -> list[Sequence]:
+    """Return all coord sequences of the length starting from start_coord."""
+    if length == 1:
+        return [[keypad[start_coord]]]  # a list one 1-length sequence
+    else:
+        next_moves = get_knight_moves(keypad, start_coord)
+
+        sub_sequences = [
+            sequence
+            for next_move in next_moves
+            for sequence in generate_seqs_from(keypad, next_move, length - 1)
+        ]
+
+        return [
+            generate_seqs_from(keypad, start_coord, 1)[0] + sequence
+            for sequence in sub_sequences
+        ]
+
+
+def generate_seqs(
+    keypad: Keypad, length: int, max_vowels: int
+) -> list[Sequence]:
     """Return all of the valid sequences of the specified length."""
-    return []
+    sequences = []
+
+    for coord, val in keypad.items():
+        for sequence in generate_seqs_from(keypad, coord, length):
+            # check for number of vowels
+            if count_vowels(sequence) <= max_vowels:
+                sequences.append(sequence)
+
+    return sequences
 
 
 def build_keypad_from_csv(filename: str) -> Keypad:
